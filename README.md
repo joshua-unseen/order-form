@@ -1,2 +1,2 @@
 # order-form
-cupcakes
+A simple html/javascript page for ordering cupcakes.
