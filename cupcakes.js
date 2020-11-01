@@ -5,9 +5,11 @@ let order = {
     zip: "change this",
     phone: "change this"
 }
+let priceTotal = 0;
+
 function CakeTotal() {
-    const payButtons = document.getElementsByClassName("pay-button");
     let cakes = 0;
+    const payButtons = document.getElementsByClassName("pay-button");
     for (let i = 1; i < 7; i++) {
         cakes += parseInt(document.getElementById("cake"+i).children[0].value);
     }
@@ -21,7 +23,10 @@ function CakeTotal() {
             element.disabled = true;
         }
     }
+    priceTotal = cakes * 3;
+    console.log(priceTotal);
 }
+
 function Pay(payMethod) {
     cakeForm = document.getElementById("cake-select");
     
@@ -38,4 +43,8 @@ function Pay(payMethod) {
     }
     console.log(order);
     document.getElementById(payMethod).style = "display: default";
+}
+
+function PayPalMe() {
+    window.open("https://paypal.me/joshuaunseen/" + priceTotal);
 }
