@@ -56,7 +56,7 @@ function Pay(payMethod) {
     console.log(order);
     switch (payMethod) {
         case "paypal":
-            window.open("https://paypal.me/QuigleysCakes/" + order.price);
+            // window.open("https://paypal.me/QuigleysCakes/" + order.price);
             break;
         default:
             break;
@@ -69,8 +69,8 @@ function Pay(payMethod) {
     }
     document.write(`Total: $${order.price}`);
     document.write("<p>Customer Information:</p>");
-    document.write(`Name: ${order.name}<br />`);
-    document.write(`Address: ${order.address}, ${order.city}, ${order.zip}<br />`);
-    document.write(`Phone Number: ${order.phone}<br />`);
-    document.write(`Email Address: ${order.email}<br />`);
+    document.write(`${order.name}<br />`);
+    document.write(`${order.address}, ${order.city}, ${order.zip}<br />`);
+    document.write(`${order.phone}<br />`);
+    document.write(`${order.email}<br />`);
 }
