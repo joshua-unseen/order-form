@@ -1,84 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" idth=devic>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Cupcackes</title>
-    <script src="./cupcakes.js"></script>
 </head>
 <body>
-    <form action="" id="cake-select">
-        <h2>Price per cupcake: $3.00</h2>
-        <ul>
-            <li id="cake1">
-                <input type="number" value="0" min="0" name="cake1" onchange="CakeTotal()"><label for="cake1">Cupcake 1</label>
-            </li>
-            <li id="cake2">
-                <input type="number" value="0" min="0" name="cake2" onchange="CakeTotal()"><label for="cake2">Cupcake 2</label>
-            </li>
-            <li id="cake3">
-                <input type="number" value="0" min="0" name="cake3" onchange="CakeTotal()"><label for="cake3">Cupcake 3</label>
-            </li>
-            <li id="cake4">
-                <input type="number" value="0" min="0" name="cake4" onchange="CakeTotal()"><label for="cake4">Cupcake 4</label>
-            </li>
-            <li id="cake5">
-                <input type="number" value="0" min="0" name="cake5" onchange="CakeTotal()"><label for="cake5">Cupcake 5</label>
-            </li>
-            <li id="cake6">
-                <input type="number" value="0" min="0" name="cake6" onchange="CakeTotal()"><label for="cake6">Cupcake 6</label>
-            </li>
-        </ul>
-        <input class="pay-button" type="button" value="Pay Cash" onclick="Pay('cash')" disabled>
-        <input class="pay-button" type="button" value="Pay with PayPal" onclick="Pay('paypal')" disabled>
+    <form action="">
+        <fieldset id="cake-select">
+            <h3>Price per cupcake: $3.00</h3>
+            <ul>
+                <li id="cake1">
+                    <input type="number" value="0" min="0" name="cake1"><label for="cake1"> Cupcake 1</label>
+                </li>
+                <li id="cake2">
+                    <input type="number" value="0" min="0" name="cake2"><label for="cake2"> Cupcake 2</label>
+                </li>
+                <li id="cake3">
+                    <input type="number" value="0" min="0" name="cake3"><label for="cake3"> Cupcake 3</label>
+                </li>
+                <li id="cake4">
+                    <input type="number" value="0" min="0" name="cake4"><label for="cake4"> Cupcake 4</label>
+                </li>
+                <li id="cake5">
+                    <input type="number" value="0" min="0" name="cake5"><label for="cake5"> Cupcake 5</label>
+                </li>
+                <li id="cake6">
+                    <input type="number" value="0" min="0" name="cake6"><label for="cake6"> Cupcake 6</label>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset id="customer-info">
+            <h3>Customer Information:</h3>
+            <p>
+                <label for="name">Name: </label>
+                <input type="text" name="name">
+            </p>
+            <p>
+                <label for="address">Address: </label>
+                <input type="text" name="address">
+            </p>
+            <p>
+                <label for="city">City: </label>
+                <input type="text" name="city">
+                <label for="zip">Zip Code: </label>
+                <input type="text" name="zip">
+            </p>
+            <p>
+                <label for="phone">Phone Number: </label>
+                <input type="tel" name="phone">
+            </p>
+            <p id="email">
+                <label for="email">Email Address: </label>
+                <input type="email" name="email">
+            </p>    
+        </fieldset>
+        <fieldset id="submit" disabled>
+            <input class="pay-button" type="button" value="Pay Cash" onclick="Pay('cash')">
+            <input class="pay-button" type="button" value="Pay with PayPal" onclick="Pay('paypal')">
+        </fieldset>
     </form>
-    <form action="" id="cash" style="display: none;">
-        <h2>Cash Order</h2>
-        <p>
-            <label for="name">Name: </label>
-            <input type="text">
-        </p>
-        <p>
-            <label for="address">Address: </label>
-            <input type="text" name="address">
-        </p>
-        <p>
-            <label for="city">City: </label>
-            <input type="text" name="city">
-            <label for="zip">Zip Code: </label>
-            <input type="text" name="zip">
-        </p>
-        <p>
-            <label for="phone">Phone Number: </label>
-            <input type="tel" name="phone">
-        </p>
-        <input type="button" value="Submit Order">
-    </form>
-    <form action="" id="paypal" style="display: none;">
-        <h2>PayPal Order</h2>
-        <p>
-            <label for="name">Name: </label>
-            <input type="text">
-        </p>
-        <p>
-            <label for="address">Address: </label>
-            <input type="text" name="address">
-        </p>
-        <p>
-            <label for="city">City: </label>
-            <input type="text" name="city">
-            <label for="zip">Zip Code: </label>
-            <input type="text" name="zip">
-        </p>
-        <p>
-            <label for="phone">Phone Number: </label>
-            <input type="tel" name="phone">
-        </p>
-        <p>
-            <label for="email">Email Address: </label>
-            <input type="email" name="email">
-        </p>
-        <input type="button" value="Submit Order" onclick="PayPalMe()">
-    </form>
+
+    <script src="./cupcakes.js"></script>
 </body>
 </html>

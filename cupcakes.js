@@ -1,38 +1,58 @@
 let order = {
     cakes: {},
-    address: "change this",
-    city: "change this",
-    zip: "change this",
-    phone: "change this"
+    address: "no data entered",
+    city: "no data entered",
+    zip: "no data entered",
+    phone: "no data entered"
 }
 let priceTotal = 0;
 
+const cakeSelect = document.getElementById("cake-select");
+const custInfo = document.getElementById("customer-info");
+
+cakeSelect.addEventListener("input", CakeTotal);
+custInfo.addEventListener("input", InfoDump);
+
 function CakeTotal() {
+    const payButtons = document.getElementById("submit");
     let cakes = 0;
-    const payButtons = document.getElementsByClassName("pay-button");
-    for (let i = 1; i < 7; i++) {
-        cakes += parseInt(document.getElementById("cake"+i).children[0].value);
+    let info = false;
+    // for (let i = 1; i < 7; i++) {
+    //     cakes += parseInt(document.getElementById("cake"+i).children[0].value);
+    // }
+    for (const field of cakeSelect.getElementsByTagName("input")) {
+        console.log(cakeSelect);
+        cakes += parseInt(field.value);
     }
-    if (cakes > 5) {
-        for (let element of payButtons) {
-           element.disabled = false; 
+    for (const field of custInfo.getElementsByTagName("input")) {
+        console.log(field.value)
+        if (field.value === "") {
+            info = false;
+            break;
         }
+        info = true;
+    }
+    if (cakes > 5 && info === true) {
+        payButtons.disabled = false;
     }
     else {
-        for (let element of payButtons) {
-            element.disabled = true;
-        }
+        payButtons.disabled = true;
     }
     priceTotal = cakes * 3;
     console.log(priceTotal);
 }
 
+function InfoDump(event) {
+    console.log(event.target.value);
+    order[event.target.name] = event.target.value;
+}
+
+function EmptyCheck(cakes, info) {
+
+}
+
 function Pay(payMethod) {
-    cakeForm = document.getElementById("cake-select");
-    
-    for (child of cakeForm) {
-        child.disabled = true;
-    }
+    // document.getElementById("cake-select").disabled = true;
     for (let i = 1; i < 7; i++) {
         let thisCake = document.getElementById("cake" + i).children;
         let cakeName = thisCake[1].innerText;
@@ -42,9 +62,14 @@ function Pay(payMethod) {
         }
     }
     console.log(order);
-    document.getElementById(payMethod).style = "display: default";
-}
+    switch (payMethod) {
+        case "paypal":
+            window.open("https://paypal.me/QuigleysCakes/" + priceTotal);
+            break;
+        default:
+            break;
+    }
 
-function PayPalMe() {
-    window.open("https://paypal.me/joshuaunseen/" + priceTotal);
+    document.forms[0].style = "display: none;"
+    document.write(JSON.stringify(order));
 }
