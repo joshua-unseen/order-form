@@ -14,6 +14,7 @@ cakeSelect.addEventListener("input", CakeTotal);
 custInfo.addEventListener("input", InfoDump);
 
 function CakeTotal(event) {
+    console.log(event.target.parent);
     order.cakes[event.target.name] = parseInt(event.target.value);
     GoAhead();
 
@@ -33,9 +34,7 @@ function GoAhead() {
     for (const field of cakeSelect.getElementsByTagName("input")) {
         cakes += parseInt(field.value);
     }
-    console.log(order.cakes);
     for (const field of custInfo.getElementsByTagName("input")) {
-        console.log(field.value)
         if (field.value === "") {
             info = false;
             break;
@@ -57,12 +56,21 @@ function Pay(payMethod) {
     console.log(order);
     switch (payMethod) {
         case "paypal":
-            window.open("https://paypal.me/QuigleysCakes/" + priceTotal);
+            window.open("https://paypal.me/QuigleysCakes/" + order.price);
             break;
         default:
             break;
     }
 
     document.forms[0].style = "display: none;"
-    document.write(JSON.stringify(order));
+    document.write("<h2>New Order</h2>");
+    for (cake in order.cakes) {
+        document.write(`${cake}: ${order.cakes[cake]} <br />`);
+    }
+    document.write(`Total: $${order.price}`);
+    document.write("<p>Customer Information:</p>");
+    document.write(`Name: ${order.name}<br />`);
+    document.write(`Address: ${order.address}, ${order.city}, ${order.zip}<br />`);
+    document.write(`Phone Number: ${order.phone}<br />`);
+    document.write(`Email Address: ${order.email}<br />`);
 }
