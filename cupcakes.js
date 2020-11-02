@@ -14,8 +14,8 @@ cakeSelect.addEventListener("input", CakeTotal);
 custInfo.addEventListener("input", InfoDump);
 
 function CakeTotal(event) {
-    console.log(event.target.parent);
-    order.cakes[event.target.name] = parseInt(event.target.value);
+    cakeName = event.target.parentNode.children[1].innerText;
+    order.cakes[cakeName] = parseInt(event.target.value);
     GoAhead();
 
 }
